@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { href: "#work", label: "Work" },
@@ -54,6 +54,19 @@ function RestaurantArtwork() {
 
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuToggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
 
   return (
     <>
@@ -62,7 +75,9 @@ export default function Portfolio() {
         <a className="wordmark" href="#home" aria-label="devOvi home">dev<span>Ovi</span><b>.</b></a>
         <span className="header-note">INDEPENDENT DEVELOPER<br />INDIA · AVAILABLE FOR WORK</span>
         <button
+          ref={menuToggleRef}
           className="menu-toggle"
+          id="menu-toggle"
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
           aria-label={menuOpen ? "Close navigation" : "Open navigation"}
@@ -101,7 +116,7 @@ export default function Portfolio() {
             <div className="project-details">
               <div className="project-overline"><span>CHROME EXTENSION</span><span>PERSONAL PROJECT&nbsp; / &nbsp;01</span></div>
               <div className="project-title-row"><h3>DropVault</h3><span className="project-monogram" aria-hidden="true">D<span>V</span></span></div>
-              <p className="project-description">A Chrome extension concept for keeping dropshipping leads in one place. Built around a simple idea: make the work of tracking opportunities feel a little more organised.</p>
+              <p className="project-description">A Chrome extension for dropshipping lead tracking, designed to keep potential opportunities organized in one place. No public demo or repository is linked here; ask me about the project below.</p>
               <div className="project-footer"><span className="project-tags"><span>CHROME EXTENSION</span><span>LEAD TRACKING</span></span><a className="text-link" href="#contact">Ask me about it <Arrow diagonal /></a></div>
             </div>
           </article>
@@ -111,8 +126,8 @@ export default function Portfolio() {
             <div className="project-details">
               <div className="project-overline"><span>WEB APPLICATION</span><span>PERSONAL PROJECT&nbsp; / &nbsp;02</span></div>
               <div className="project-title-row"><h3>Restaurant<br />Ordering App</h3><span className="project-monogram project-monogram--menu" aria-hidden="true">R<span>O</span></span></div>
-              <p className="project-description">A restaurant ordering experience with its own live home on the web. Explore the project as it exists today.</p>
-              <div className="project-footer"><span className="project-tags"><span>RESTAURANT</span><span>ORDERING EXPERIENCE</span></span><a className="text-link" href="https://apitos-restaurant.vercel.app/" target="_blank" rel="noreferrer">View live project <Arrow diagonal /></a></div>
+              <p className="project-description">A restaurant ordering app presented as a live website. Visit the project to explore the experience; implementation details and technology stack can be added when confirmed.</p>
+              <div className="project-footer"><span className="project-tags"><span>RESTAURANT</span><span>ORDERING APP</span></span><a className="text-link" href="https://apitos-restaurant.vercel.app/" target="_blank" rel="noreferrer">View live project <Arrow diagonal /></a></div>
             </div>
           </article>
           <div className="work-endnote"><span>END OF SELECTION</span><span>MORE TO COME&nbsp; ↗</span></div>
@@ -128,7 +143,7 @@ export default function Portfolio() {
         </section>
 
         <section className="contact section-shell" id="contact" aria-labelledby="contact-heading">
-          <div className="contact-inner"><div className="contact-label"><span className="status-dot" /> HAVE SOMETHING IN MIND?</div><h2 id="contact-heading">Let’s make<br /><span>it matter.</span></h2><p>Open to frontend opportunities and thoughtful freelance work. If you have a project or a role in mind, I’d love to hear about it.</p><a className="contact-link" href="#work"><span>EXPLORE SELECTED WORK</span><span className="contact-link__arrow"><Arrow diagonal /></span></a></div>
+          <div className="contact-inner"><div className="contact-label"><span className="status-dot" /> HAVE SOMETHING IN MIND?</div><h2 id="contact-heading">Let’s make<br /><span>it matter.</span></h2><p>Open to frontend opportunities and thoughtful freelance work. If you have a project or a role in mind, I’d love to hear about it.</p><div className="contact-notice" id="contact-details"><span className="contact-link__arrow" aria-hidden="true"><Arrow diagonal /></span><span><strong>Direct contact link coming soon</strong><small>Add your preferred email or contact profile in <code>src/components/portfolio.tsx</code>.</small></span></div></div>
           <div className="contact-side-note">GOOD WORK STARTS<br />WITH A CONVERSATION.</div>
         </section>
       </main>
