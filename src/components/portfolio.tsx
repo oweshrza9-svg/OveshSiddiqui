@@ -128,7 +128,7 @@ export default function Portfolio() {
         </section>
 
         <section className="contact section-shell" id="contact" aria-labelledby="contact-heading">
-          <div className="contact-inner"><div className="contact-label"><span className="status-dot" /> HAVE SOMETHING IN MIND?</div><h2 id="contact-heading">Let’s make<br /><span>it matter.</span></h2><p>Open to frontend opportunities and thoughtful freelance work. If you have a project or a role in mind, I’d love to hear about it.</p><a className="contact-link" href="https://apitos-restaurant.vercel.app/" target="_blank" rel="noreferrer"><span>SEE WHAT I’VE BEEN BUILDING</span><span className="contact-link__arrow"><Arrow diagonal /></span></a></div>
+          <div className="contact-inner"><div className="contact-label"><span className="status-dot" /> HAVE SOMETHING IN MIND?</div><h2 id="contact-heading">Let’s make<br /><span>it matter.</span></h2><p>Open to frontend opportunities and thoughtful freelance work. If you have a project or a role in mind, I’d love to hear about it.</p><a className="contact-link" href="#work"><span>EXPLORE SELECTED WORK</span><span className="contact-link__arrow"><Arrow diagonal /></span></a></div>
           <div className="contact-side-note">GOOD WORK STARTS<br />WITH A CONVERSATION.</div>
         </section>
       </main>
