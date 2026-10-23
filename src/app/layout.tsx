@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "lenis/dist/lenis.css";
+import PageIntro from "@/components/motion/page-intro";
+import SmoothScrollProvider from "@/components/motion/smooth-scroll-provider";
 
 export const metadata: Metadata = {
   title: "devOvi — Frontend developer",
@@ -22,7 +25,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SmoothScrollProvider>
+          <PageIntro />
+          {children}
+        </SmoothScrollProvider>
+      </body>
     </html>
   );
 }

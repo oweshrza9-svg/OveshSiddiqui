@@ -20,7 +20,8 @@ Open [http://localhost:3000](http://localhost:3000). To create a production buil
 
 ### Content notes
 
-- The Restaurant Ordering App links to its supplied live URL: https://apitos-restaurant.vercel.app/.
-- DropVault is described as a Chrome extension for dropshipping lead tracking. A public demo or source link was not provided, so none is implied.
-- The contact section uses the supplied project link because no email or professional profile URL was provided. Replace that CTA with a real contact destination when one is available.
+- The Selected Work section includes NSOC Winter Edition, the Restaurant Ordering App, and DropVault. DropVault has no public demo or source link in the project configuration, so none is implied.
+- The Restaurant Ordering App is disclosed as an independent frontend recreation, made with the original owner's permission and not the official application.
+- The inquiry form currently validates required fields in the browser but does not deliver or store submissions. To enable delivery, create a Formspree form addressed to `developerovesh234@gmail.com`, add its endpoint ID as a deployment environment variable, and wire the form submission to that endpoint with loading, success, and error feedback. Keep any private service token on the server; never put it in browser code.
+- Confirm that `developerovesh234@gmail.com` is an active account before adding the visible direct-email link. The current page intentionally does not expose an unconfirmed mailto address.
 # OveshSiddiqui
